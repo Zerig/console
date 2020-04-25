@@ -24,16 +24,22 @@ class Log{
 			$line = substr($line, 0, -1);
 
 			$num = substr_count($line, "	");
-			$min = ($num < $min && strlen($line) > 0)? $num : $min;
+			$notab_line = str_replace("	", "", $line);
+
+
+			$min = ($num < $min && strlen($line) > 0 && strlen($notab_line) > 0)? $num : $min;
 		}
 
+		$new_array_sql = [];
 		for($i = 0; $i < count($array_sql); $i++){
 			$array_sql[$i] = substr($array_sql[$i], 0, -1);
-			if(strlen($array_sql[$i]) > 0) 	$array_sql[$i] = substr($array_sql[$i], $min);
-			else   							unset($array_sql[$i]);
+			$notab_line = str_replace("\t", "", $array_sql[$i]);
+
+			if(strlen($array_sql[$i]) > 0 && strlen($notab_line) > 0)	$new_array_sql[] = substr($array_sql[$i], $min);
+
 		}
 
-		return implode("\n", $array_sql);
+		return implode("\n", $new_array_sql);
 		// -------------
 	}
 
