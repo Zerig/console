@@ -22,6 +22,7 @@ echo '$log_data->sql  =>'."\n<i>".$log_data->sql."</i>\n";
 
 
 echo "\n";
+
 echo '<b>$log_data = \Console\Log::mysql("INSERT INTO table (id) VALUES(5)")</b>'."\n";
 $log_data = \Console\Log::mysql("
 	INSERT INTO table
