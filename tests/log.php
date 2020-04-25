@@ -51,7 +51,7 @@ foreach(\Console\Log::getMysql() as $data){
 	$i++;
 }
 echo ']'."\n";
-
+echo dirname($_SERVER['SCRIPT_FILENAME']);
 
 echo "<br>---------------------------------------------<br><br>";
 
