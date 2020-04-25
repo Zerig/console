@@ -1,6 +1,6 @@
 {
     "name": "zerig/console",
-    "description": "Save data which could be helpful during creating system.",
+    "description": "Works with data which could be helpful during creating system.",
     "type": "library",
 	"keywords": [
         "console",
