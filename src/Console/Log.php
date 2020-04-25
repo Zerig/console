@@ -35,7 +35,11 @@ class Log{
 			$array_sql[$i] = substr($array_sql[$i], 0, -1);
 			$notab_line = str_replace("\t", "", $array_sql[$i]);
 
-			if(strlen($array_sql[$i]) > 0 && strlen($notab_line) > 0)	$new_array_sql[] = substr($array_sql[$i], $min);
+			if($i == 0 || $i == count($array_sql) - 1){
+				if(strlen($array_sql[$i]) > 0 && strlen($notab_line) > 0)	$new_array_sql[] = substr($array_sql[$i], $min);
+			}else{
+				$new_array_sql[] = substr($array_sql[$i], $min);
+			}
 
 		}
 
