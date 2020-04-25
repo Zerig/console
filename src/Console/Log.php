@@ -8,10 +8,15 @@ class Log{
 
 
 		$sql = self::removeTabs($sql);
+		$bt = debug_backtrace();
+		$caller = array_shift($bt);
 
-
-		$GLOBALS["log"]["mysql"][] = $sql;
- 		return $sql;
+		$GLOBALS["log"]["mysql"][] = new LogData([
+			"sql" 	=> $sql,
+			"file" 	=> $caller['file'],
+			"line" 	=> $caller['line']
+		]);
+ 		return end($GLOBALS["log"]["mysql"]);
 	}
 
 

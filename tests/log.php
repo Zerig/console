@@ -9,32 +9,42 @@ require_once __DIR__ . '/../vendor/autoload.php'; // Autoload files using Compos
 echo "<h2>CONSOLE \ LOG</h2>";
 echo "<hr>";
 
-						echo '\Console\Log::mysql("SELECT * FROM table") => "'.\Console\Log::mysql("
+echo '<b>$log_data = \Console\Log::mysql("SELECT * FROM table")</b>'."\n";
+$log_data = \Console\Log::mysql("
 							SELECT *
 							FROM table
 
 							WHERE id=5
-						").'"'."\n";
+				");
+echo '$log_data->file => '.$log_data->file."\n";
+echo '$log_data->line => '.$log_data->line."\n";
+echo '$log_data->sql  =>'."\n<i>".$log_data->sql."</i>\n";
+
+
 echo "\n";
-echo '\Console\Log::mysql("SELECT * FROM table") => "'.\Console\Log::mysql("
+echo '<b>$log_data = \Console\Log::mysql("INSERT INTO table (id) VALUES(5)")</b>'."\n";
+$log_data = \Console\Log::mysql("
 	INSERT INTO table
 	(id)
 	VALUES (5)
-").'"'."\n";
+");
+echo '$log_data->file => '.$log_data->file."\n";
+echo '$log_data->line => '.$log_data->line."\n";
+echo '$log_data->sql  =>'."\n<i>".$log_data->sql."</i>\n";
 echo "\n";
-echo '\Console\Log::getMysql() => ['."\n";
+echo '<b>\Console\Log::getMysql()</b> => ['."\n";
 $i = 0;
-foreach(\Console\Log::getMysql() as $sql){
+foreach(\Console\Log::getMysql() as $data){
 	$first = true;
-	foreach(explode("\n", $sql) as $line){
+	foreach(explode("\n", $data->sql) as $line){
 
 		if($first){
 			echo "\n";
 			echo '	['.$i.'] =>	'."\n";
-			echo '	'.$line."\n";
+			echo '	<i>'.$line."</i>\n";
 			$first = false;
 		}else{
-			echo '	'.$line."\n";
+			echo '	<i>'.$line."</i>\n";
 		}
 	}
 	$i++;
