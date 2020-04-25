@@ -7,6 +7,15 @@ class Log{
 		if(!isset($GLOBALS["log"]["mysql"])) $GLOBALS["log"]["mysql"] = [];
 
 
+		$sql = self::removeTabs($sql);
+
+
+		$GLOBALS["log"]["mysql"][] = $sql;
+ 		return $sql;
+	}
+
+
+	public static function removeTabs($sql){
 		// REMOVE tabs
 		$array_sql = explode("\n", $sql);
 		$min = 9999;
@@ -24,12 +33,8 @@ class Log{
 			else   							unset($array_sql[$i]);
 		}
 
-		$sql = implode("\n", $array_sql);
+		return implode("\n", $array_sql);
 		// -------------
-
-
-		$GLOBALS["log"]["mysql"][] = $sql;
- 		return $sql;
 	}
 
 	public static function getMysql(){
