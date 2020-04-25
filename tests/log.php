@@ -14,8 +14,7 @@ $log_data = \Console\Log::mysql("
 							SELECT *
 							FROM table
 
-							WHERE id=5
-				");
+							WHERE id='5'");
 echo '$log_data->file => '.$log_data->file."\n";
 echo '$log_data->line => '.$log_data->line."\n";
 echo '$log_data->sql  =>'."\n<i>".$log_data->sql."</i>\n";

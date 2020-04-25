@@ -22,7 +22,7 @@ class Log{
 
 	public static function removeTabs($sql){
 		// REMOVE tabs
-		$array_sql = explode("\n", $sql);
+		$array_sql = explode("\r\n", $sql);
 		$min = 9999;
 
 		foreach($array_sql as $line){
@@ -37,7 +37,6 @@ class Log{
 
 		$new_array_sql = [];
 		for($i = 0; $i < count($array_sql); $i++){
-			$array_sql[$i] = substr($array_sql[$i], 0, -1);
 			$notab_line = str_replace("\t", "", $array_sql[$i]);
 
 			if($i == 0 || $i == count($array_sql) - 1){
