@@ -1,16 +1,20 @@
-# FILE MANAGER
-- needs **\UrlParser\Url** class
-
-This NAMESPACE group specializes in File/Folder structures. It loads files and folders into class.
-
-1. FILE MANAGER \ **FF**
-2. FILE MANAGER \ **FILE**
-3. FILE MANAGER \ **FOLDER**
+# CONSOLE \ LOG
+Works with data which could be helpful during creating system. This is a helpful class it doesn´t need nothing, but the others needs it.
 
 
-## FILE MANAGER \ FF
-This class is universal for File/Folder. Another classes inherit from this class.
 
+
+## ::mysql($sql)
+collect information about sql activity.
 ```php
+\Console\Log::mysql("
+	SELECT *
+	FROM table
+");
+```
 
+## ::include($page_name)
+collect information about page include.
+```php
+\Console\Log::include("index.php");
 ```
