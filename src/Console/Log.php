@@ -11,8 +11,6 @@ class Log{
 		$bt = debug_backtrace();
 		$caller = array_shift($bt);
 
-		echo print_r($caller);
-
 		$GLOBALS["log"]["mysql"][] = new LogData([
 			"sql" 	=> $sql,
 			"file" 	=> $caller['file'],
