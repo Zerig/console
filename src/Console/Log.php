@@ -4,11 +4,13 @@ namespace Console;
 class Log{
 
 	public static function mysql($sql){
-		$GLOBALS["log"]["mysql"] = $sql;
- 		return $GLOBALS["log"]["mysql"];
+		if(!isset($GLOBALS["log"]["mysql"])) $GLOBALS["log"]["mysql"] = [];
+
+		$GLOBALS["log"]["mysql"][] = $sql;
+ 		return $sql;
 	}
 
-	public static function getMysql($sql){
+	public static function getMysql(){
 		return $GLOBALS["log"]["mysql"];
 	}
 
@@ -20,9 +22,9 @@ class Log{
 
 
 
-	public static function include($page_name){
-		$GLOBALS["log"]["include"] = $page_name;
- 		return $GLOBALS["log"]["include"];
+	public static function page($page_name){
+		$GLOBALS["log"]["page"] = $page_name;
+ 		return $GLOBALS["log"]["page"];
 	}
 
 
