@@ -13,7 +13,6 @@ class Log{
 
 		foreach($array_sql as $line){
 			$line = substr($line, 0, -1);
-			echo '"'.$line.'"'." => ".strlen($line)."\n";
 
 			$num = substr_count($line, "	");
 			$min = ($num < $min && strlen($line) > 0)? $num : $min;

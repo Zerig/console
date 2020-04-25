@@ -8,9 +8,26 @@ echo '\Console\Log::mysql("SELECT * FROM table") => "'.\Console\Log::mysql("
 	SELECT *
 	FROM table
 ").'"'."\n";
+
+echo '\Console\Log::mysql("SELECT * FROM table") => "'.\Console\Log::mysql("
+	INSERT INTO table
+	(id)
+	VALUES (5)
+").'"'."\n";
 echo '\Console\Log::getMysql() => ['."\n";
+$i = 0;
 foreach(\Console\Log::getMysql() as $sql){
-	echo '	[0] => "'.$sql.'"'."\n";
+	$first = true;
+	foreach(explode("\n", $sql) as $line){
+
+		if($first){
+			echo '	['.$i.'] =>	'.$line."\n";
+			$first = false;
+		}else{
+			echo '		'.$line."\n";
+		}
+	}
+	$i++;
 }
 echo ']'."\n";
 
