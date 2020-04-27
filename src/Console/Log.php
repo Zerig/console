@@ -52,6 +52,7 @@ class Log{
 	}
 
 	public static function getMysql(){
+		if(!isset($GLOBALS["log"]["mysql"])) return [];
 		return $GLOBALS["log"]["mysql"];
 	}
 
